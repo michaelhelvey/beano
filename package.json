@@ -1,0 +1,78 @@
+{
+  "name": "@michaelhelvey/beano",
+  "description": "the simplest imaginable logger",
+  "version": "1.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelhelvey/beano"
+  },
+  "author": {
+    "email": "michael.helvey1@gmail.com",
+    "name": "Michael Helvey",
+    "url": "https://github.com/michaelhelvey"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "prepare": "lefthook install",
+    "test": "vitest",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "build": "tsdown"
+  },
+  "prettier": {
+    "proseWrap": "always",
+    "singleQuote": false,
+    "semi": true,
+    "trailingComma": "all",
+    "useTabs": false,
+    "printWidth": 100,
+    "tabWidth": 2,
+    "plugins": [
+      "@trivago/prettier-plugin-sort-imports"
+    ],
+    "importOrder": [
+      "^node:.*$",
+      "<THIRD_PARTY_MODULES>",
+      "^[./]"
+    ],
+    "importOrderSeparation": false,
+    "importOrderSortSpecifiers": true
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "@opentelemetry/api": ">=1.9"
+  },
+  "devDependencies": {
+    "@eslint/compat": "1.4.0",
+    "@trivago/prettier-plugin-sort-imports": "5.2.2",
+    "@types/node": "24.7.0",
+    "@vitest/coverage-v8": "3.2.4",
+    "eslint": "9.37.0",
+    "jiti": "2.6.1",
+    "lefthook": "1.13.6",
+    "prettier": "3.6.2",
+    "tsdown": "0.15.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.0",
+    "vitest": "3.2.4"
+  }
+}
