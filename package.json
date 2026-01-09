@@ -1,7 +1,7 @@
 {
   "name": "@michaelhelvey/beano",
   "description": "the simplest imaginable logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "sideEffects": false,
   "private": false,
@@ -44,7 +44,7 @@
     "semi": true,
     "trailingComma": "all",
     "useTabs": false,
-    "printWidth": 100,
+    "printWidth": 120,
     "tabWidth": 2,
     "plugins": [
       "@trivago/prettier-plugin-sort-imports"

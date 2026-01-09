@@ -1,8 +1,16 @@
 import path from "node:path";
 import { includeIgnoreFile } from "@eslint/compat";
+import type { RuleConfig } from "@eslint/core";
 import eslint from "@eslint/js";
 import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
+
+const typescriptEslintRules = [...tseslint.configs.strictTypeChecked, ...tseslint.configs.stylisticTypeChecked]
+  .map((c) => c.rules)
+  .filter(Boolean)
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  .map((o) => Object.keys(o!))
+  .flat();
 
 export default defineConfig(
   includeIgnoreFile(path.join(import.meta.dirname, ".gitignore"), "exclude files from .gitignore"),
@@ -31,5 +39,12 @@ export default defineConfig(
         projectService: false,
       },
     },
+  },
+  {
+    files: ["**/*.test.tsx", "**/*.test.ts"],
+    rules: typescriptEslintRules.reduce<Record<string, RuleConfig>>((acc, curr) => {
+      acc[curr] = "off";
+      return acc;
+    }, {}),
   },
 );
