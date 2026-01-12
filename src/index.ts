@@ -87,7 +87,7 @@ const defaultSetupDefaults: SetupDefaults = {
   writer:
     process.env.NODE_ENV === "test" && !process.env.LOG_IN_TEST
       ? noopWriter
-      : process.stdout.write.bind(process.stdout),
+      : (s: string) => process.stdout.write(s + "\n"),
   formatter: process.env.NODE_ENV === "production" ? jsonFormatter : textFormatter,
   annotater: () => ({}),
   level: "debug",
