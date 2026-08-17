@@ -168,7 +168,10 @@ const _getLogger = (defaults: SetupDefaults) => (mod: string) =>
  * logger.error("auth failed", { userId: 123 });
  * ```
  */
-export const getLogger = _getLogger(setupDefaults);
+export const getLogger = (mod: string): Logger => {
+  assert.ok(setupDefaults);
+  return _getLogger(setupDefaults)(mod);
+};
 
 /**
  * @deprecated Used only in development of the beano package.  Do not use in userspace code.

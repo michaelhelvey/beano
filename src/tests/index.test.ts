@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { _private, jsonFormatter } from "../index.ts";
+import { _private, getLogger, jsonFormatter, setup } from "../index.ts";
 
 describe("logger", () => {
   const { _getLogger, defaultSetupDefaults } = _private;
@@ -28,5 +28,16 @@ describe("logger", () => {
     const logger = _getLogger(mockDefaults)("blah");
     logger.trace("whatever");
     expect(mockDefaults.writer).not.toHaveBeenCalled();
+  });
+
+  it("uses setup defaults for loggers created after setup", async () => {
+    const writer = vi.fn();
+    await setup({ writer });
+
+    getLogger("configured").info("configured writer");
+
+    expect(writer).toHaveBeenCalledOnce();
+    expect(writer.mock.calls[0][0]).toMatch(/INFO \(configured\): configured writer/i);
+    await setup();
   });
 });

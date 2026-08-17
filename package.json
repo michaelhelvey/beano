@@ -1,7 +1,7 @@
 {
   "name": "@michaelhelvey/beano",
   "description": "the simplest imaginable logger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "sideEffects": false,
   "private": false,
